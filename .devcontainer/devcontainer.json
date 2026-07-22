@@ -11,10 +11,9 @@
     "source=gh-config-${devcontainerId},target=/home/node/.config/gh,type=volume",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.claude/CLAUDE.md,target=/home/node/.claude/CLAUDE.md,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.claude/skills,target=/home/node/.claude/skills,type=bind,consistency=cached",
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.claude/skills,target=${containerWorkspaceFolder}/.claude/skills,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitignore_global,target=/home/node/.gitignore_global,type=bind,consistency=cached"
   ],
-  "postCreateCommand": "mkdir -p .claude && sudo mkdir -p /home/node/.claude /home/node/.config/gh && sudo chown -R node:node /home/node/.claude /home/node/.config/gh 2>/dev/null || true",
+  "postCreateCommand": "sudo mkdir -p /home/node/.claude /home/node/.config/gh && sudo chown -R node:node /home/node/.claude /home/node/.config/gh 2>/dev/null || true",
   "customizations": {
     "vscode": {
       "extensions": [
