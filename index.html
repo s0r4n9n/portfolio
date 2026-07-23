@@ -13,40 +13,57 @@
 
 <body>
   <header>
-    <h1>s0r4n9n</h1>
-    <p>ひとつの html ファイルにすべて直書きの、小さなポートフォリオです。</p>
+    <h1>作ったもの置き場</h1>
+    <p><a href="profile.html">プロフィール</a></p>
   </header>
 
-  <h2>技術スタック</h2>
-  <dl>
-    <dt>コーディング</dt>
-    <dd>Python</dd>
+  <div class="tool">
+    <h2>今日の日付</h2>
+    <p id="today"></p>
+  </div>
 
-    <dt>環境管理</dt>
-    <dd>Docker, Dev Container</dd>
+  <div class="tool">
+    <h2>ひとことメッセージ</h2>
+    <form id="msg-form">
+      <input id="msg-input" maxlength="10" placeholder="10文字まで" required />
+      <button>残す</button>
+    </form>
+    <ul id="msg-list"></ul>
+  </div>
 
-    <dt>インフラ・デプロイ</dt>
-    <dd>Cloudflare</dd>
+  <script>
+    const d = new Date();
+    document.getElementById("today").textContent =
+      `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
 
-    <dt>ブラウザ</dt>
-    <dd>Google Chrome</dd>
-  </dl>
+    const msgList = document.getElementById("msg-list");
+    const msgForm = document.getElementById("msg-form");
+    const msgInput = document.getElementById("msg-input");
 
-  <h2>経歴</h2>
-  <ul>
-    <li><span class="date">2026.4〜</span> 株式会社 Ridge-i — 機械学習/AI エンジニア</li>
-  </ul>
+    async function loadMessages() {
+      const msgs = await (await fetch("/api/messages")).json();
+      msgList.replaceChildren(
+        ...msgs.map((m) => {
+          const li = document.createElement("li");
+          li.textContent = m.text; // textContent で入れるので XSS にならない
+          return li;
+        }),
+      );
+    }
 
-  <h2>学歴</h2>
-  <ul>
-    <li><span class="date">2026.3</span> 東京大学 総合文化研究科 博士課程 単位取得満期退学</li>
-    <li><span class="date">2023.4</span> 東京大学 総合文化研究科 博士課程 入学</li>
-    <li><span class="date">2023.3</span> 東京大学 総合文化研究科 修士課程 修了</li>
-    <li><span class="date">2021.4</span> 東京大学 総合文化研究科 修士課程 入学</li>
-    <li><span class="date">2021.3</span> 鹿児島大学 教育学部 卒業</li>
-    <li><span class="date">2017.4</span> 鹿児島大学 教育学部 入学</li>
-  </ul>
+    msgForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await fetch("/api/messages", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text: msgInput.value }),
+      });
+      msgInput.value = "";
+      loadMessages();
+    });
 
+    loadMessages();
+  </script>
 </body>
 
 </html>

@@ -1,7 +1,10 @@
 {
   "name": "portfolio",
   "compatibility_date": "2026-07-23",
+  "main": "worker.js",
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [{ "binding": "MESSAGES", "id": "78821a198b4d48e7beb8eea5c91687d2" }]
 }
