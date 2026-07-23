@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,22 +7,85 @@
 
   <title>s0r4n9n</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     body {
-      margin: 0;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
       font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+
+    header {
       text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 2.5rem 0 0.75rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    dt {
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    dd {
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .date {
+      color: #888;
     }
   </style>
 </head>
 
 <body>
-  <h1>s0r4n9n</h1>
-  <p>ひとつの html ファイルにすべて直書きの、小さなポートフォリオです。</p>
+  <header>
+    <h1>s0r4n9n</h1>
+    <p>ひとつの html ファイルにすべて直書きの、小さなポートフォリオです。</p>
+  </header>
+
+  <h2>技術スタック</h2>
+  <dl>
+    <dt>コーディング</dt>
+    <dd>Python</dd>
+
+    <dt>環境管理</dt>
+    <dd>Docker, Dev Container</dd>
+
+    <dt>インフラ・デプロイ</dt>
+    <dd>Cloudflare</dd>
+
+    <dt>ブラウザ</dt>
+    <dd>Google Chrome</dd>
+  </dl>
+
+  <h2>経歴</h2>
+  <ul>
+    <li><span class="date">2026.4〜</span> 株式会社 Ridge-i — 機械学習/AI エンジニア</li>
+  </ul>
+
+  <h2>学歴</h2>
+  <ul>
+    <li><span class="date">2026.3</span> 東京大学 総合文化研究科 博士課程 単位取得満期退学</li>
+    <li><span class="date">2023.4</span> 東京大学 総合文化研究科 博士課程 入学</li>
+    <li><span class="date">2023.3</span> 東京大学 総合文化研究科 修士課程 修了</li>
+    <li><span class="date">2021.4</span> 東京大学 総合文化研究科 修士課程 入学</li>
+    <li><span class="date">2021.3</span> 鹿児島大学 教育学部 卒業</li>
+    <li><span class="date">2017.4</span> 鹿児島大学 教育学部 入学</li>
+  </ul>
+
 </body>
 
 </html>
