@@ -1,0 +1,9 @@
+.icon {
+  font-family: "Symbols Nerd Font";
+}
+
+body {
+  max-width: 80ch;
+  margin: 1lh auto;
+  padding: 0 1ch;
+}
